@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom styles for the dark theme */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-container {
+            background-color: #1f2937; /* gray-800 */
+            border: 1px solid #374151; /* gray-700 */
+        }
+        .form-input {
+            background-color: #374151; /* gray-700 */
+            border-color: #4b5563; /* gray-600 */
+            color: #d1d5db; /* gray-300 */
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6; /* blue-500 */
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+        }
+        .form-label {
+            color: #9ca3af; /* gray-400 */
+        }
+        .submit-btn {
+            background-color: #2563eb; /* blue-600 */
+        }
+        .submit-btn:hover {
+            background-color: #1d4ed8; /* blue-700 */
+        }
+        .submit-btn:disabled {
+            background-color: #4b5563;
+            cursor: not-allowed;
+        }
+        /* Custom styles for placeholder text color */
+        ::placeholder {
+            color: #6b7280; /* gray-500 */
+            opacity: 1; /* Firefox */
+        }
+        /* Disable textarea resizing */
+        textarea {
+            resize: none !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 flex items-center justify-center min-h-screen p-4">
+
+    <!-- Responsive padding: ছোট স্ক্রিনে p-6 এবং বড় স্ক্রিনে p-8 -->
+    <div class="form-container w-full max-w-lg p-6 sm:p-8 rounded-xl shadow-lg">
+        
+        <!-- Responsive font size: ছোট স্ক্রিনে 2xl এবং বড় স্ক্রিনে 3xl -->
+        <h1 class="text-2xl sm:text-3xl font-bold text-center text-white mb-2">Submit Your Information</h1>
+        
+        <!-- Responsive font size for paragraph -->
+        <p class="text-center text-gray-400 mb-8 text-sm sm:text-base">Please fill out the form below with your correct information.</p>
+        
+        <!-- Form starts here -->
+        <form id="userInfoForm">
+            <div class="mb-5">
+                <label for="name" class="form-label block mb-2 text-sm font-medium">Name</label>
+                <input type="text" id="name" name="name" class="form-input w-full p-3 rounded-lg text-sm transition-all" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="mb-5">
+                <label for="whatsapp" class="form-label block mb-2 text-sm font-medium">WhatsApp Number</label>
+                <input type="tel" id="whatsapp" name="whatsapp" class="form-input w-full p-3 rounded-lg text-sm transition-all" placeholder="e.g., 01712345678" required>
+            </div>
+            
+            <div class="mb-5">
+                <label for="gmail" class="form-label block mb-2 text-sm font-medium">Gmail</label>
+                <input type="email" id="gmail" name="gmail" class="form-input w-full p-3 rounded-lg text-sm transition-all" placeholder="your.email@gmail.com" required>
+            </div>
+            
+            <div class="mb-5">
+                <label for="gender" class="form-label block mb-2 text-sm font-medium">Gender</label>
+                <select id="gender" name="gender" class="form-input w-full p-3 rounded-lg text-sm transition-all" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="mb-6">
+                <label for="address" class="form-label block mb-2 text-sm font-medium">Address</label>
+                <textarea id="address" name="address" rows="3" class="form-input w-full p-3 rounded-lg text-sm transition-all" placeholder="Enter your current address" required></textarea>
+            </div>
+            
+            <!-- Message area for success or error -->
+            <div id="message" class="text-center mb-6 text-sm font-medium h-5"></div>
+
+            <button type="submit" id="submit-button" class="submit-btn w-full text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300">Submit</button>
+        </form>
+        <!-- Form ends here -->
+    </div>
+
+    <script>
+        const form = document.getElementById('userInfoForm');
+        const messageDiv = document.getElementById('message');
+        const submitButton = document.getElementById('submit-button');
+
+        // IMPORTANT: Make sure your Google Apps Script URL is correct
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxVcI3fnXY4NlYca9FJjrhdt0FM32snvtFEnCgbwCqQBLfSRFIUu2YjxcP2ZU7lrszJ/exec';
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            if (validateForm()) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+
+                // Send the data but don't wait for the response that causes errors.
+                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                    .catch(error => console.error('Error (ignored):', error)); // Log error to console but don't show to user.
+
+                // Assume success and update UI after a short delay
+                setTimeout(() => {
+                    displayMessage('Your information has been saved successfully.', 'success');
+                    form.reset();
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit';
+                }, 1500); // Wait 1.5 seconds
+            }
+        });
+
+        function validateForm() {
+            // ... (validation logic remains the same)
+            const name = document.getElementById('name').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const gmail = document.getElementById('gmail').value.trim();
+            const gender = document.getElementById('gender').value;
+            const address = document.getElementById('address').value.trim();
+
+            if (name === '' || whatsapp === '' || gmail === '' || gender === '' || address === '') {
+                 displayMessage('Please fill out all fields.', 'error');
+                 return false;
+            }
+            return true;
+        }
+
+        function displayMessage(message, type) {
+            messageDiv.textContent = message;
+            messageDiv.className = 'text-center mb-6 text-sm font-medium h-5';
+            if (type === 'error') {
+                messageDiv.classList.add('text-red-400');
+            } else {
+                messageDiv.classList.add('text-green-400');
+            }
+        }
+    </script>
+
+</body>
+</html>
+

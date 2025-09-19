@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!-- ভাষা এবং থিমের জন্য এট্রিবিউট ডিফল্ট হিসেবে সেট করা হয়েছে -->
+<html lang="bn" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-bn="আপনার ব্যবসার নাম - হোম" data-lang-en="Your Brand Name - Home">আপনার ব্যবসার নাম - হোম</title>
+    
+    <!-- SwiperJS CSS for Slider -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Common CSS File -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind CSS Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--color-primary)',
+                        background: 'var(--color-background)',
+                        'card-bg': 'var(--color-card-bg)',
+                        'header-bg': 'var(--color-header-bg)',
+                        'text-base': 'var(--color-text-base)',
+                        'text-muted': 'var(--color-text-muted)',
+                        'logo': 'var(--color-logo)',
+                        'hero-title': 'var(--color-hero-title)',
+                        'hero-subtitle': 'var(--color-hero-subtitle)',
+                    },
+                    fontFamily: {
+                        sans: ['var(--font-primary)', 'sans-serif'],
+                        bn: ['var(--font-secondary)', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
+
+</head>
+<body class="bg-background text-text-base antialiased">
+
+    <!-- Header and Navigation -->
+    <header class="bg-header-bg backdrop-blur-sm sticky top-0 z-50 shadow-md shadow-black/20">
+        <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-logo" data-lang-bn="আপনার<span class='text-primary'>লোগো</span>" data-lang-en="Your<span class='text-primary'>Logo</span>">আপনার<span class='text-primary'>লোগো</span></a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link text-primary font-semibold" data-lang-bn="হোম" data-lang-en="Home">হোম</a>
+                <a href="about.html" class="nav-link" data-lang-bn="আমাদের সম্পর্কে" data-lang-en="About Us">আমাদের সম্পর্কে</a>
+                <a href="services.html" class="nav-link" data-lang-bn="পণ্য" data-lang-en="Products">পণ্য</a>
+                <a href="gallery.html" class="nav-link" data-lang-bn="গ্যালারি" data-lang-en="Gallery">গ্যালারি</a>
+                <a href="contact.html" class="nav-link" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</a>
+            </div>
+
+            <!-- Action Buttons: Theme and Language -->
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <button id="theme-toggle" class="action-btn"><i class="fas fa-sun"></i></button>
+                <button id="lang-toggle" class="text-text-base text-sm font-semibold border border-primary px-3 py-1 rounded-md">EN</button>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="action-btn text-xl ml-2">
+                        <i id="menu-icon" class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu hidden md:hidden">
+            <div class="px-6 pt-2 pb-4 space-y-2">
+                <a href="index.html" class="block nav-link text-primary font-semibold" data-lang-bn="হোম" data-lang-en="Home">হোম</a>
+                <a href="about.html" class="block nav-link" data-lang-bn="আমাদের সম্পর্কে" data-lang-en="About Us">আমাদের সম্পর্কে</a>
+                <a href="services.html" class="block nav-link" data-lang-bn="পণ্য" data-lang-en="Products">পণ্য</a>
+                <a href="gallery.html" class="block nav-link" data-lang-bn="গ্যালারি" data-lang-en="Gallery">গ্যালারি</a>
+                <a href="contact.html" class="block nav-link" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-[70vh] flex items-center justify-center bg-cover bg-center overflow-hidden" style="background-image: var(--hero-bg-image);">
+            <!-- Background Text (FIXED with Page Name) -->
+            <div class="absolute inset-0 flex items-center justify-center -z-10">
+                <h2 class="background-text">
+                    <span class="text-primary">Your</span><span class="text-logo">Page</span>
+                </h2>
+            </div>
+
+            <div class="container mx-auto px-6 text-center z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-hero-title leading-tight mb-4" data-lang-bn="স্টাইলের নতুন ট্রেন্ড <span class='text-primary'>আপনার হাতে</span>" data-lang-en="The New Trend of Style <span class='text-primary'>in Your Hands</span>">স্টাইলের নতুন ট্রেন্ড <span class='text-primary'>আপনার হাতে</span></h1>
+                <p class="text-lg md:text-xl text-hero-subtitle max-w-3xl mx-auto mb-8" data-lang-bn="আমরা আপনার জন্য নিয়ে এসেছি সেরা মানের এবং আকর্ষণীয় ডিজাইনের টি-শার্ট কালেকশন।" data-lang-en="We bring you the best quality and attractively designed t-shirt collection.">আমরা আপনার জন্য নিয়ে এসেছি সেরা মানের এবং আকর্ষণীয় ডিজাইনের টি-শার্ট কালেকশন।</p>
+                <a href="#products" class="inline-block px-10 py-3 btn-primary text-lg" data-lang-bn="কালেকশন দেখুন" data-lang-en="View Collection">কালেকশন দেখুন</a>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section id="products" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl md:text-4xl text-center text-text-base mb-12" data-lang-bn="আমাদের সেরা পণ্য তালিকা" data-lang-en="Our Best Products">আমাদের সেরা পণ্য তালিকা</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Product Cards... -->
+                    <div class="card rounded-lg overflow-hidden text-center">
+                        <img src="https://placehold.co/400x400/000000/e53935?text=T-Shirt+1" alt="টি-শার্ট ডিজাইন ১" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-text-base mb-2" data-lang-bn="প্রিমিয়াম কটন টি-শার্ট" data-lang-en="Premium Cotton T-Shirt">প্রিমিয়াম কটন টি-শার্ট</h3>
+                            <div class="flex justify-center items-center space-x-3 mb-4">
+                                <p class="text-primary text-lg font-semibold">৳ 450</p>
+                                <p class="text-text-muted text-sm line-through">৳ 600</p>
+                            </div>
+                            <button class="w-full py-2 btn-secondary" data-lang-bn="অর্ডার করুন" data-lang-en="Order Now">অর্ডার করুন</button>
+                        </div>
+                    </div>
+                    <div class="card rounded-lg overflow-hidden text-center">
+                        <img src="https://placehold.co/400x400/000000/e53935?text=T-Shirt+2" alt="টি-শার্ট ডিজাইন ২" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-text-base mb-2" data-lang-bn="গ্রাফিক প্রিন্টেড টি-শার্ট" data-lang-en="Graphic Printed T-Shirt">গ্রাফিক প্রিন্টেড টি-শার্ট</h3>
+                             <div class="flex justify-center items-center space-x-3 mb-4">
+                                <p class="text-primary text-lg font-semibold">৳ 500</p>
+                                <p class="text-text-muted text-sm line-through">৳ 750</p>
+                            </div>
+                            <button class="w-full py-2 btn-secondary" data-lang-bn="অর্ডার করুন" data-lang-en="Order Now">অর্ডার করুন</button>
+                        </div>
+                    </div>
+                    <div class="card rounded-lg overflow-hidden text-center">
+                        <img src="https://placehold.co/400x400/000000/e53935?text=T-Shirt+3" alt="টি-শার্ট ডিজাইন ৩" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-text-base mb-2" data-lang-bn="সলিড কালার টি-শার্ট" data-lang-en="Solid Color T-Shirt">সলিড কালার টি-শার্ট</h3>
+                            <div class="flex justify-center items-center space-x-3 mb-4">
+                                <p class="text-primary text-lg font-semibold">৳ 400</p>
+                                <p class="text-text-muted text-sm line-through">৳ 500</p>
+                            </div>
+                            <button class="w-full py-2 btn-secondary" data-lang-bn="অর্ডার করুন" data-lang-en="Order Now">অর্ডার করুন</button>
+                        </div>
+                    </div>
+                    <div class="card rounded-lg overflow-hidden text-center">
+                        <img src="https://placehold.co/400x400/000000/e53935?text=T-Shirt+4" alt="টি-শার্ট ডিজাইন ৪" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-text-base mb-2" data-lang-bn="স্পোর্টস টি-শার্ট" data-lang-en="Sports T-Shirt">স্পোর্টস টি-শার্ট</h3>
+                            <div class="flex justify-center items-center space-x-3 mb-4">
+                                <p class="text-primary text-lg font-semibold">৳ 550</p>
+                                <p class="text-text-muted text-sm line-through">৳ 800</p>
+                            </div>
+                            <button class="w-full py-2 btn-secondary" data-lang-bn="অর্ডার করুন" data-lang-en="Order Now">অর্ডার করুন</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section with Slider -->
+        <section class="py-20 bg-card-bg overflow-hidden">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl md:text-4xl text-center text-text-base mb-12" data-lang-bn="ব্যবহারকারীদের মতামত" data-lang-en="Customer Reviews">ব্যবহারকারীদের মতামত</h2>
+                
+                <!-- Swiper Slider -->
+                <div class="swiper-container testimonial-slider relative">
+                    <div class="swiper-wrapper">
+                        <!-- Slides... -->
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-center mx-4">
+                                <img src="https://placehold.co/100x100/e0e0e0/1e1e1e?text=Client+1" alt="ব্যবহারকারী ১" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-primary">
+                                <p class="text-text-muted mb-4 italic" data-lang-bn="&quot;এদের টি-শার্টের কোয়ালিটি অসাধারণ। আমি খুবই সন্তুষ্ট এবং সবাইকে কেনার জন্য সুপারিশ করছি।&quot;" data-lang-en="&quot;The quality of their t-shirts is outstanding. I am very satisfied and recommend them to everyone.&quot;">"এদের টি-শার্টের কোয়ালিটি অসাধারণ। আমি খুবই সন্তুষ্ট এবং সবাইকে কেনার জন্য সুপারিশ করছি।"</p>
+                                <h4 class="text-lg font-bold text-text-base" data-lang-bn="মোঃ শরিফুল ইসলাম" data-lang-en="Md. Shariful Islam">মোঃ শরিফুল ইসলাম</h4>
+                                <p class="text-sm text-primary" data-lang-bn="ছাত্র" data-lang-en="Student">ছাত্র</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-center mx-4">
+                                <img src="https://placehold.co/100x100/e0e0e0/1e1e1e?text=Client+2" alt="ব্যবহারকারী ২" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-primary">
+                                <p class="text-text-muted mb-4 italic" data-lang-bn="&quot;খুব দ্রুত ডেলিভারি পেয়েছি এবং প্রিন্টের মান খুবই ভালো। ধন্যবাদ আপনাদের।&quot;" data-lang-en="&quot;Received the delivery very quickly and the print quality is excellent. Thank you.&quot;">"খুব দ্রুত ডেলিভারি পেয়েছি এবং প্রিন্টের মান খুবই ভালো। ধন্যবাদ আপনাদের।"</p>
+                                <h4 class="text-lg font-bold text-text-base" data-lang-bn="সুমাইয়া আক্তার" data-lang-en="Sumaiya Akter">সুমাইয়া আক্তার</h4>
+                                <p class="text-sm text-primary" data-lang-bn="ফ্রিল্যান্সার" data-lang-en="Freelancer">ফ্রিল্যান্সার</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-center mx-4">
+                                <img src="https://placehold.co/100x100/e0e0e0/1e1e1e?text=Client+3" alt="ব্যবহারকারী ৩" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-primary">
+                                <p class="text-text-muted mb-4 italic" data-lang-bn="&quot;ডিজাইনগুলো খুবই ইউনিক এবং আধুনিক। বন্ধুদের জন্য আবার অর্ডার করব।&quot;" data-lang-en="&quot;The designs are very unique and modern. Will order again for friends.&quot;">"ডিজাইনগুলো খুবই ইউনিক এবং আধুনিক। বন্ধুদের জন্য আবার অর্ডার করব।"</p>
+                                <h4 class="text-lg font-bold text-text-base" data-lang-bn="রাকিব হাসান" data-lang-en="Rakib Hasan">রাকিব হাসান</h4>
+                                <p class="text-sm text-primary" data-lang-bn="গ্রাফিক ডিজাইনার" data-lang-en="Graphic Designer">গ্রাফিক ডিজাইনার</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Navigation Buttons -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black pt-12 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4" data-lang-bn="আমাদের সম্পর্কে" data-lang-en="About Us">আমাদের সম্পর্কে</h3>
+                    <p class="text-gray-400" data-lang-bn="আমরা সেরা মানের কাপড়ে আকর্ষণীয় ডিজাইন দিয়ে টি-শার্ট তৈরি করি যা আপনার ব্যক্তিত্বকে ফুটিয়ে তোলে।" data-lang-en="We create t-shirts with attractive designs on the best quality fabric that expresses your personality.">আমরা সেরা মানের কাপড়ে আকর্ষণীয় ডিজাইন দিয়ে টি-শার্ট তৈরি করি যা আপনার ব্যক্তিত্বকে ফুটিয়ে তোলে।</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4" data-lang-bn="গুরুত্বপূর্ণ লিংক" data-lang-en="Quick Links">গুরুত্বপূর্ণ লিংক</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary transition-colors" data-lang-bn="আমাদের পরিচয়" data-lang-en="About Us">আমাদের পরিচয়</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary transition-colors" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors" data-lang-bn="শর্তাবলী" data-lang-en="Terms & Conditions">শর্তাবলী</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-primary"></i><span data-lang-bn="আপনার ঠিকানা, শহর, দেশ" data-lang-en="Your Address, City, Country">আপনার ঠিকানা, শহর, দেশ</span></li>
+                        <li class="flex items-center"><i class="fas fa-phone-alt mr-3 text-primary"></i><span>+880 123 456 7890</span></li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-3 text-primary"></i><span>info@yourbrand.com</span></li>
+                    </ul>
+                </div>
+                <!-- Social Media -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4" data-lang-bn="আমাদের অনুসরণ করুন" data-lang-en="Follow Us">আমাদের অনুসরণ করুন</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 text-2xl hover:text-primary transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 text-2xl hover:text-primary transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 text-2xl hover:text-primary transition-colors"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 text-center text-gray-500">
+                <p data-lang-bn="&copy; 2025 আপনার ব্যবসার নাম। সর্বস্বত্ব সংরক্ষিত।" data-lang-en="&copy; 2025 Your Brand Name. All Rights Reserved.">&copy; 2025 আপনার ব্যবসার নাম। সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- SwiperJS for Slider -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Common JS File -->
+    <script src="script.js"></script>
+</body>
+</html>
+
