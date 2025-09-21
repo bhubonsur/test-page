@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!-- ভাষা এবং থিমের জন্য এট্রিবিউট ডিফল্ট হিসেবে সেট করা হয়েছে -->
+<html lang="bn" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-bn="গ্যালারি - আপনার ব্যবসার নাম" data-lang-en="Gallery - Your Brand Name">গ্যালারি - আপনার ব্যবসার নাম</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Common CSS File -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind CSS Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--color-primary)',
+                        background: 'var(--color-background)',
+                        'card-bg': 'var(--color-card-bg)',
+                        'header-bg': 'var(--color-header-bg)',
+                        'text-base': 'var(--color-text-base)',
+                        'text-muted': 'var(--color-text-muted)',
+                        'logo': 'var(--color-logo)',
+                        'hero-title': 'var(--color-hero-title)',
+                        'hero-subtitle': 'var(--color-hero-subtitle)',
+                    },
+                    fontFamily: {
+                        sans: ['var(--font-primary)', 'sans-serif'],
+                        bn: ['var(--font-secondary)', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
+
+</head>
+<body class="bg-background text-text-base antialiased">
+
+    <!-- Header and Navigation -->
+    <header class="bg-header-bg backdrop-blur-sm sticky top-0 z-50 shadow-md shadow-black/20">
+        <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-logo" data-lang-bn="আপনার<span class='text-primary'>লোগো</span>" data-lang-en="Your<span class='text-primary'>Logo</span>">আপনার<span class='text-primary'>লোগো</span></a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link" data-lang-bn="হোম" data-lang-en="Home">হোম</a>
+                <a href="about.html" class="nav-link" data-lang-bn="আমাদের সম্পর্কে" data-lang-en="About Us">আমাদের সম্পর্কে</a>
+                <a href="services.html" class="nav-link" data-lang-bn="পণ্য" data-lang-en="Products">পণ্য</a>
+                <a href="gallery.html" class="nav-link text-primary font-semibold" data-lang-bn="গ্যালারি" data-lang-en="Gallery">গ্যালারি</a>
+                <a href="contact.html" class="nav-link" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</a>
+            </div>
+
+            <!-- Action Buttons: Theme and Language -->
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <button id="theme-toggle" class="action-btn"><i class="fas fa-sun"></i></button>
+                <button id="lang-toggle" class="text-text-base text-sm font-semibold border border-primary px-3 py-1 rounded-md">EN</button>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="action-btn text-xl ml-2">
+                        <i id="menu-icon" class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu hidden md:hidden">
+            <div class="px-6 pt-2 pb-4 space-y-2">
+                <a href="index.html" class="block nav-link" data-lang-bn="হোম" data-lang-en="Home">হোম</a>
+                <a href="about.html" class="block nav-link" data-lang-bn="আমাদের সম্পর্কে" data-lang-en="About Us">আমাদের সম্পর্কে</a>
+                <a href="services.html" class="block nav-link" data-lang-bn="পণ্য" data-lang-en="Products">পণ্য</a>
+                <a href="gallery.html" class="block nav-link text-primary font-semibold" data-lang-bn="গ্যালারি" data-lang-en="Gallery">গ্যালারি</a>
+                <a href="contact.html" class="block nav-link" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Page Header Section -->
+        <section class="py-20 bg-card-bg">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-text-base leading-tight" data-lang-bn="আমাদের ডিজাইন গ্যালারি" data-lang-en="Our Design Gallery">আমাদের ডিজাইন গ্যালারি</h1>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Gallery Images -->
+                    <div class="gallery-item">
+                        <img src="d1.jpg" alt="ডিজাইন ১" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="d1.jpg" alt="ডিজাইন ২" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="d1.jpg" alt="ডিজাইন ৩" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="d1.jpg" alt="ডিজাইন ৪" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="d1.jpg" alt="ডিজাইন ৫" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="d1.jpg" alt="ডিজাইন ৬" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="d1.jpg" alt="ডিজাইন ৭" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="d1.jpg" alt="ডিজাইন ৮" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="d1.jpg" alt="ডিজাইন ৯" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="d1.jpg" alt="ডিজাইন ১০" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="d1.jpg" alt="ডিজাইন ১১" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="d1.jpg" alt="ডিজাইন ১২" class="gallery-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black pt-12 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4" data-lang-bn="আমাদের সম্পর্কে" data-lang-en="About Us">আমাদের সম্পর্কে</h3>
+                    <p class="text-gray-400" data-lang-bn="আমরা সেরা মানের কাপড়ে আকর্ষণীয় ডিজাইন দিয়ে টি-শার্ট তৈরি করি যা আপনার ব্যক্তিত্বকে ফুটিয়ে তোলে।" data-lang-en="We create t-shirts with attractive designs on the best quality fabric that expresses your personality.">আমরা সেরা মানের কাপড়ে আকর্ষণীয় ডিজাইন দিয়ে টি-শার্ট তৈরি করি যা আপনার ব্যক্তিত্বকে ফুটিয়ে তোলে।</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4" data-lang-bn="গুরুত্বপূর্ণ লিংক" data-lang-en="Quick Links">গুরুত্বপূর্ণ লিংক</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary transition-colors" data-lang-bn="আমাদের পরিচয়" data-lang-en="About Us">আমাদের পরিচয়</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary transition-colors" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors" data-lang-bn="শর্তাবলী" data-lang-en="Terms & Conditions">শর্তাবলী</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-primary"></i><span data-lang-bn="আপনার ঠিকানা, শহর, দেশ" data-lang-en="Your Address, City, Country">আপনার ঠিকানা, শহর, দেশ</span></li>
+                        <li class="flex items-center"><i class="fas fa-phone-alt mr-3 text-primary"></i><span>+880 123 456 7890</span></li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-3 text-primary"></i><span>info@yourbrand.com</span></li>
+                    </ul>
+                </div>
+                <!-- Social Media -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4" data-lang-bn="আমাদের অনুসরণ করুন" data-lang-en="Follow Us">আমাদের অনুসরণ করুন</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 text-2xl hover:text-primary transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 text-2xl hover:text-primary transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 text-2xl hover:text-primary transition-colors"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 text-center text-gray-500">
+                <p data-lang-bn="&copy; 2025 আপনার ব্যবসার নাম। সর্বস্বত্ব সংরক্ষিত।" data-lang-en="&copy; 2025 Your Brand Name. All Rights Reserved.">&copy; 2025 আপনার ব্যবসার নাম। সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- SwiperJS for Slider -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Common JS File -->
+    <script src="script.js"></script>
+</body>
+</html>
