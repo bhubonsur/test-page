@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         menuIcon.className = isHidden ? 'fas fa-bars' : 'fas fa-times';
     });
     
-    // --- COMBINED SCROLL EVENT LISTENER ---
+    // --- COMBINED SCROLL EVENT LISTENER (FIXED) ---
     // This single listener handles both auto-hiding the mobile menu and showing the scroll-to-top button.
     window.addEventListener('scroll', () => {
         // Logic to hide mobile menu on scroll
