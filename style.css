@@ -18,7 +18,14 @@ html[data-theme='dark'] {
     --color-logo: #ffffff;
     --color-hero-title: #ffffff;
     --color-hero-subtitle: #d1d5db;
-    --hero-bg-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1920x1080/000000/111111');
+    /* এই লাইনে শুধু image url দিন, text বাদ দিন */
+    --hero-bg-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,)), url('https://placehold.co/Your/Page/000000/111111?text=');
+}
+html[data-theme='dark'] .background-text .text-logo {
+    color: #462aea;
+}
+html[data-theme='light'] .background-text .text-logo {
+    color: #462aea;
 }
 
 /* Light Theme */
@@ -32,7 +39,8 @@ html[data-theme='light'] {
     --color-logo: #111827;
     --color-hero-title: #111827;
     --color-hero-subtitle: #374151;
-    --hero-bg-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), url('https://placehold.co/1920x1080/f9fafb/ffffff');
+    /* এখানে text বাদ দিন */
+    --hero-bg-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), url('https://placehold.co/Your/Page/f9fafb/ffffff?text=');
 }
 
 /* GENERAL STYLES */
@@ -97,18 +105,19 @@ body {
 .background-text {
     font-size: clamp(3rem, 15vw, 10rem);
     font-weight: 900;
-    color: var(--color-text-base); /* Default color for Page */
-    opacity: 0.08;
+    opacity: 0.71;
     text-transform: uppercase;
     white-space: nowrap;
     user-select: none;
     letter-spacing: 2px;
 }
-
 .background-text .text-primary {
-    color: var(--color-primary); /* Color for Your */
+    color: var(--color-primary);
 }
-
+.background-text .text-logo {
+    /* theme অনুযায়ী color change */
+    color: var(--color-logo);
+}
 
 /* SECTION TITLE STYLES */
 .section-title {
@@ -222,10 +231,20 @@ body {
     visibility: visible;
     transform: translateY(0);
 }
-
 @media (min-width: 768px) {
     .scroll-to-top {
         display: none !important;
     }
 }
+@media (max-width: 767px) {
+    .desktop-menu {
+        display: none;
+    }
+}
+@media (max-width: 480px) {
+    .background-text {
+        font-size: clamp(1.3rem, 17vw, 6rem);
+    }
+}
+
 
