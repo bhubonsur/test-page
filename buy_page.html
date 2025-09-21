@@ -1,165 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- ভাষা এবং থিমের জন্য এট্রিবিউট ডিফল্ট হিসেবে সেট করা হয়েছে -->
+<html lang="bn" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Information Form</title>
-    <!-- Tailwind CSS CDN -->
+    <title data-lang-bn="অর্ডার করুন - আপনার ব্যবসার নাম" data-lang-en="Order Now - Your Brand Name">অর্ডার করুন - আপনার ব্যবসার নাম</title>
+    
+    <!-- External Libraries and CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts (Inter) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 
-    <style>
-        /* Custom styles for the dark theme */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .form-container {
-            background-color: #1f2937; /* gray-800 */
-            border: 1px solid #374151; /* gray-700 */
-        }
-        .form-input {
-            background-color: #374151; /* gray-700 */
-            border-color: #4b5563; /* gray-600 */
-            color: #d1d5db; /* gray-300 */
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: #3b82f6; /* blue-500 */
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
-        }
-        .form-label {
-            color: #9ca3af; /* gray-400 */
-        }
-        .submit-btn {
-            background-color: #2563eb; /* blue-600 */
-        }
-        .submit-btn:hover {
-            background-color: #1d4ed8; /* blue-700 */
-        }
-        .submit-btn:disabled {
-            background-color: #4b5563;
-            cursor: not-allowed;
-        }
-        /* Custom styles for placeholder text color */
-        ::placeholder {
-            color: #6b7280; /* gray-500 */
-            opacity: 1; /* Firefox */
-        }
-        /* Disable textarea resizing */
-        textarea {
-            resize: none !important;
-        }
-    </style>
-</head>
-<body class="bg-gray-900 text-gray-200 flex items-center justify-center min-h-screen p-4">
-
-    <!-- Responsive padding: ছোট স্ক্রিনে p-6 এবং বড় স্ক্রিনে p-8 -->
-    <div class="form-container w-full max-w-lg p-6 sm:p-8 rounded-xl shadow-lg">
-        
-        <!-- Responsive font size: ছোট স্ক্রিনে 2xl এবং বড় স্ক্রিনে 3xl -->
-        <h1 class="text-2xl sm:text-3xl font-bold text-center text-white mb-2">Submit Your Information</h1>
-        
-        <!-- Responsive font size for paragraph -->
-        <p class="text-center text-gray-400 mb-8 text-sm sm:text-base">Please fill out the form below with your correct information.</p>
-        
-        <!-- Form starts here -->
-        <form id="userInfoForm">
-            <div class="mb-5">
-                <label for="name" class="form-label block mb-2 text-sm font-medium">Name</label>
-                <input type="text" id="name" name="name" class="form-input w-full p-3 rounded-lg text-sm transition-all" placeholder="Enter your full name" required>
-            </div>
-            
-            <div class="mb-5">
-                <label for="whatsapp" class="form-label block mb-2 text-sm font-medium">WhatsApp Number</label>
-                <input type="tel" id="whatsapp" name="whatsapp" class="form-input w-full p-3 rounded-lg text-sm transition-all" placeholder="e.g., 01712345678" required>
-            </div>
-            
-            <div class="mb-5">
-                <label for="gmail" class="form-label block mb-2 text-sm font-medium">Gmail</label>
-                <input type="email" id="gmail" name="gmail" class="form-input w-full p-3 rounded-lg text-sm transition-all" placeholder="your.email@gmail.com" required>
-            </div>
-            
-            <div class="mb-5">
-                <label for="gender" class="form-label block mb-2 text-sm font-medium">Gender</label>
-                <select id="gender" name="gender" class="form-input w-full p-3 rounded-lg text-sm transition-all" required>
-                    <option value="" disabled selected>Select gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-
-            <div class="mb-6">
-                <label for="address" class="form-label block mb-2 text-sm font-medium">Address</label>
-                <textarea id="address" name="address" rows="3" class="form-input w-full p-3 rounded-lg text-sm transition-all" placeholder="Enter your current address" required></textarea>
-            </div>
-            
-            <!-- Message area for success or error -->
-            <div id="message" class="text-center mb-6 text-sm font-medium h-5"></div>
-
-            <button type="submit" id="submit-button" class="submit-btn w-full text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300">Submit</button>
-        </form>
-        <!-- Form ends here -->
-    </div>
-
+    <!-- Tailwind CSS Configuration -->
     <script>
-        const form = document.getElementById('userInfoForm');
-        const messageDiv = document.getElementById('message');
-        const submitButton = document.getElementById('submit-button');
-
-        // IMPORTANT: Make sure your Google Apps Script URL is correct
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxVcI3fnXY4NlYca9FJjrhdt0FM32snvtFEnCgbwCqQBLfSRFIUu2YjxcP2ZU7lrszJ/exec';
-
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            if (validateForm()) {
-                submitButton.disabled = true;
-                submitButton.textContent = 'Submitting...';
-
-                // Send the data but don't wait for the response that causes errors.
-                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                    .catch(error => console.error('Error (ignored):', error)); // Log error to console but don't show to user.
-
-                // Assume success and update UI after a short delay
-                setTimeout(() => {
-                    displayMessage('Your information has been saved successfully.', 'success');
-                    form.reset();
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Submit';
-                }, 1500); // Wait 1.5 seconds
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--color-primary)',
+                        background: 'var(--color-background)',
+                        'card-bg': 'var(--color-card-bg)',
+                        'header-bg': 'var(--color-header-bg)',
+                        'text-base': 'var(--color-text-base)',
+                        'text-muted': 'var(--color-text-muted)',
+                        'logo': 'var(--color-logo)'
+                    }
+                }
             }
-        });
-
-        function validateForm() {
-            // ... (validation logic remains the same)
-            const name = document.getElementById('name').value.trim();
-            const whatsapp = document.getElementById('whatsapp').value.trim();
-            const gmail = document.getElementById('gmail').value.trim();
-            const gender = document.getElementById('gender').value;
-            const address = document.getElementById('address').value.trim();
-
-            if (name === '' || whatsapp === '' || gmail === '' || gender === '' || address === '') {
-                 displayMessage('Please fill out all fields.', 'error');
-                 return false;
-            }
-            return true;
-        }
-
-        function displayMessage(message, type) {
-            messageDiv.textContent = message;
-            messageDiv.className = 'text-center mb-6 text-sm font-medium h-5';
-            if (type === 'error') {
-                messageDiv.classList.add('text-red-400');
-            } else {
-                messageDiv.classList.add('text-green-400');
-            }
-        }
+        };
     </script>
 
+    <!-- Inline CSS for Form Styling -->
+    <style>
+        .form-input {
+            background-color: var(--color-background);
+            border: 1px solid var(--color-text-muted);
+            color: var(--color-text-base);
+        }
+        .form-input:focus { outline: none; border-color: var(--color-primary); }
+        .form-input::placeholder { color: var(--color-text-muted); opacity: 1; }
+        select.form-input option { background-color: var(--color-background); }
+        .form-input[readonly] { background-color: #2a2a2a; cursor: not-allowed; }
+        html[data-theme='light'] .form-input[readonly] { background-color: #e5e7eb; }
+        textarea.form-input { resize: none; }
+    </style>
+</head>
+<body class="bg-background text-text-base antialiased">
+
+    <!-- Header, Navigation, and Mobile Menu -->
+    <header class="bg-header-bg backdrop-blur-sm sticky top-0 z-50 shadow-md shadow-black/20">
+        <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-logo" data-lang-bn="আপনার<span class='text-primary'>লোগো</span>" data-lang-en="Your<span class='text-primary'>Logo</span>">আপনার<span class='text-primary'>লোগো</span></a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link" data-lang-bn="হোম" data-lang-en="Home">হোম</a>
+                <a href="about.html" class="nav-link" data-lang-bn="আমাদের সম্পর্কে" data-lang-en="About Us">আমাদের সম্পর্কে</a>
+                <a href="services.html" class="nav-link" data-lang-bn="পণ্য" data-lang-en="Products">পণ্য</a>
+                <a href="gallery.html" class="nav-link" data-lang-bn="গ্যালারি" data-lang-en="Gallery">গ্যালারি</a>
+                <a href="contact.html" class="nav-link" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</a>
+            </div>
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <button id="theme-toggle" class="action-btn"><i class="fas fa-sun"></i></button>
+                <button id="lang-toggle" class="text-text-base text-sm font-semibold border border-primary px-3 py-1 rounded-md">EN</button>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="action-btn text-xl ml-2"><i id="menu-icon" class="fas fa-bars"></i></button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="mobile-menu hidden md:hidden">
+             <div class="px-6 pt-2 pb-4 space-y-2">
+                <a href="index.html" class="block nav-link" data-lang-bn="হোম" data-lang-en="Home">হোম</a>
+                <a href="about.html" class="block nav-link" data-lang-bn="আমাদের সম্পর্কে" data-lang-en="About Us">আমাদের সম্পর্কে</a>
+                <a href="services.html" class="block nav-link" data-lang-bn="পণ্য" data-lang-en="Products">পণ্য</a>
+                <a href="gallery.html" class="block nav-link" data-lang-bn="গ্যালারি" data-lang-en="Gallery">গ্যালারি</a>
+                <a href="contact.html" class="block nav-link" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Page Header Section -->
+        <section class="py-20 bg-card-bg">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-text-base" data-lang-bn="আপনার অর্ডার সম্পন্ন করুন" data-lang-en="Complete Your Order">আপনার অর্ডার সম্পন্ন করুন</h1>
+            </div>
+        </section>
+
+        <!-- Order Form Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-6 flex justify-center">
+                <div class="card w-full max-w-2xl p-8 rounded-lg">
+                    <h2 class="text-3xl font-bold text-text-base text-center" data-lang-bn="বিলিং তথ্য" data-lang-en="Billing Information">বিলিং তথ্য</h2>
+                    <p class="text-center text-text-muted mb-8" data-lang-bn="সঠিক তথ্য দিয়ে নিচের ফর্মটি পূরণ করুন।" data-lang-en="Please fill out the form below.">সঠিক তথ্য দিয়ে নিচের ফর্মটি পূরণ করুন।</p>
+                    
+                    <form id="userInfoForm">
+                        <div class="mb-5">
+                            <label for="product_code" class="block text-text-muted mb-2" data-lang-bn="প্রোডাক্ট কোড" data-lang-en="Product Code">প্রোডাক্ট কোড</label>
+                            <input type="text" id="product_code" name="product_code" class="form-input w-full p-3 rounded-md" readonly>
+                        </div>
+                        <div class="mb-5">
+                            <label for="name" class="block text-text-muted mb-2" data-lang-bn="সম্পূর্ণ নাম" data-lang-en="Full Name">সম্পূর্ণ নাম</label>
+                            <input type="text" id="name" name="name" class="form-input w-full p-3 rounded-md" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="whatsapp" class="block text-text-muted mb-2" data-lang-bn="হোয়াটসঅ্যাপ নম্বর" data-lang-en="WhatsApp Number">হোয়াটসঅ্যাপ নম্বর</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" class="form-input w-full p-3 rounded-md" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="gmail" class="block text-text-muted mb-2" data-lang-bn="ইমেইল" data-lang-en="Email">ইমেইল</label>
+                            <input type="email" id="gmail" name="gmail" class="form-input w-full p-3 rounded-md" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="gender" class="block text-text-muted mb-2" data-lang-bn="লিঙ্গ" data-lang-en="Gender">লিঙ্গ</label>
+                            <select id="gender" name="gender" class="form-input w-full p-3 rounded-md" required>
+                                <option value="" disabled selected>Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label for="address" class="block text-text-muted mb-2" data-lang-bn="পূর্ণ ঠিকানা" data-lang-en="Full Address">পূর্ণ ঠিকানা</label>
+                            <textarea id="address" name="address" rows="4" class="form-input w-full p-3 rounded-md" required></textarea>
+                        </div>
+                        <div id="message" class="text-center mb-6 text-sm font-medium h-5"></div>
+                        <button type="submit" id="submit-button" class="w-full py-3 btn-primary" data-lang-bn="অর্ডার কনফার্ম করুন" data-lang-en="Confirm Order">অর্ডার কনফার্ম করুন</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black pt-12 pb-8">
+        <!-- Footer content... -->
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('userInfoForm');
+            const messageDiv = document.getElementById('message');
+            const submitButton = document.getElementById('submit-button');
+            const productCodeField = document.getElementById('product_code');
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const productCode = urlParams.get('product_code');
+            
+            if (productCode) productCodeField.value = productCode;
+            else productCodeField.value = 'N/A';
+            
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxVcI3fnXY4NlYca9FJjrhdt0FM32snvtFEnCgbwCqQBLfSRFIUu2YjxcP2ZU7lrszJ/exec';
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                if (validateForm()) {
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = `<span data-lang-bn="সাবমিট হচ্ছে..." data-lang-en="Submitting...">সাবমিট হচ্ছে...</span>`;
+
+                    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.result === 'success') {
+                                displayMessage('আপনার অর্ডার সফলভাবে সম্পন্ন হয়েছে।', 'success', 'Your order has been placed successfully.');
+                                form.reset();
+                                if (productCode) productCodeField.value = productCode;
+                            } else if (data.result === 'rate_limit') {
+                                displayMessage(data.message_bn, 'error', data.message_en);
+                            } else {
+                                displayMessage('একটি ত্রুটি ঘটেছে।', 'error', 'An error occurred.');
+                                console.error('Script Error:', data.error);
+                            }
+                        })
+                        .catch(error => {
+                            displayMessage('একটি নেটওয়ার্ক ত্রুটি ঘটেছে।', 'error', 'A network error occurred.');
+                            console.error('Fetch Error:', error);
+                        })
+                        .finally(() => {
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = `<span data-lang-bn="অর্ডার কনফার্ম করুন" data-lang-en="Confirm Order">অর্ডার কনফার্ম করুন</span>`;
+                        });
+                }
+            });
+
+            function validateForm() {
+                const name = document.getElementById('name').value.trim();
+                const whatsapp = document.getElementById('whatsapp').value.trim();
+                const gmail = document.getElementById('gmail').value.trim();
+                const address = document.getElementById('address').value.trim();
+
+                if (name === '' || whatsapp === '' || gmail === '' || address === '') {
+                    displayMessage('দয়া করে সকল তথ্য পূরণ করুন।', 'error', 'Please fill out all fields.');
+                    return false;
+                }
+                return true;
+            }
+
+            function displayMessage(bnMessage, type, enMessage) {
+                const currentLang = document.documentElement.lang || 'bn';
+                messageDiv.textContent = currentLang === 'bn' ? bnMessage : enMessage;
+                messageDiv.className = 'text-center mb-6 text-sm font-medium h-5';
+                if (type === 'error') {
+                    messageDiv.classList.add('text-red-500');
+                } else {
+                    messageDiv.classList.add('text-green-500');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
 
