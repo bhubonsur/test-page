@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- ভাষা এবং থিমের জন্য এট্রিবিউট ডিফল্ট হিসেবে সেট করা হয়েছে -->
+<html lang="bn" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-bn="আমাদের সম্পর্কে - আপনার ব্যবসার নাম" data-lang-en="About Us - Your Brand Name">আমাদের সম্পর্কে - আপনার ব্যবসার নাম</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Common CSS File -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind CSS Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--color-primary)',
+                        background: 'var(--color-background)',
+                        'card-bg': 'var(--color-card-bg)',
+                        'header-bg': 'var(--color-header-bg)',
+                        'text-base': 'var(--color-text-base)',
+                        'text-muted': 'var(--color-text-muted)',
+                        'logo': 'var(--color-logo)',
+                        'hero-title': 'var(--color-hero-title)',
+                        'hero-subtitle': 'var(--color-hero-subtitle)',
+                    },
+                    fontFamily: {
+                        sans: ['var(--font-primary)', 'sans-serif'],
+                        bn: ['var(--font-secondary)', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
+
+</head>
+<body class="bg-background text-text-base antialiased">
+
+    <!-- Header and Navigation -->
+    <header class="bg-header-bg backdrop-blur-sm sticky top-0 z-50 shadow-md shadow-black/20">
+        <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-logo" data-lang-bn="আপনার<span class='text-primary'>লোগো</span>" data-lang-en="Your<span class='text-primary'>Logo</span>">আপনার<span class='text-primary'>লোগো</span></a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link" data-lang-bn="হোম" data-lang-en="Home">হোম</a>
+                <a href="about.html" class="nav-link text-primary font-semibold" data-lang-bn="আমাদের সম্পর্কে" data-lang-en="About Us">আমাদের সম্পর্কে</a>
+                <a href="services.html" class="nav-link" data-lang-bn="পণ্য" data-lang-en="Products">পণ্য</a>
+                <a href="gallery.html" class="nav-link" data-lang-bn="গ্যালারি" data-lang-en="Gallery">গ্যালারি</a>
+                <a href="contact.html" class="nav-link" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</a>
+            </div>
+
+            <!-- Action Buttons: Theme and Language -->
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <button id="theme-toggle" class="action-btn"><i class="fas fa-sun"></i></button>
+                <button id="lang-toggle" class="text-text-base text-sm font-semibold border border-primary px-3 py-1 rounded-md">EN</button>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="action-btn text-xl ml-2">
+                        <i id="menu-icon" class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu hidden md:hidden">
+            <div class="px-6 pt-2 pb-4 space-y-2">
+                <a href="index.html" class="block nav-link" data-lang-bn="হোম" data-lang-en="Home">হোম</a>
+                <a href="about.html" class="block nav-link text-primary font-semibold" data-lang-bn="আমাদের সম্পর্কে" data-lang-en="About Us">আমাদের সম্পর্কে</a>
+                <a href="services.html" class="block nav-link" data-lang-bn="পণ্য" data-lang-en="Products">পণ্য</a>
+                <a href="gallery.html" class="block nav-link" data-lang-bn="গ্যালারি" data-lang-en="Gallery">গ্যালারি</a>
+                <a href="contact.html" class="block nav-link" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Page Header Section -->
+        <section class="py-20 bg-card-bg">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-text-base leading-tight" data-lang-bn="আমাদের সম্পর্কে" data-lang-en="About Us">আমাদের সম্পর্কে</h1>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="https://placehold.co/600x400/111111/e53935?text=Our+Story" alt="আমাদের গল্প" class="rounded-lg shadow-lg w-full">
+                    </div>
+                    <div>
+                        <h2 class="section-title text-3xl md:text-4xl text-text-base mb-6" data-lang-bn="আমাদের গল্প" data-lang-en="Our Story">আমাদের গল্প</h2>
+                        <p class="text-text-muted mb-4" data-lang-bn="[প্রতিষ্ঠার সাল] সালে প্রতিষ্ঠিত, [আপনার ব্যবসার নাম] একটি ছোট উদ্যোগ হিসেবে যাত্রা শুরু করে। আমাদের লক্ষ্য ছিল সেরা মানের কাপড় এবং সৃজনশীল ডিজাইন দিয়ে এমন টি-শার্ট তৈরি করা যা তরুণ প্রজন্মের ফ্যাশনের প্রতীক হয়ে উঠবে। বছরের পর বছর ধরে, আপনাদের ভালোবাসা এবং সমর্থনে আমরা আজ এই পর্যায়ে এসেছি।" data-lang-en="Founded in [Year], [Your Brand Name] started as a small initiative. Our goal was to create t-shirts with the best quality fabric and creative designs that would become a fashion symbol for the young generation. Over the years, with your love and support, we have reached this stage today.">[প্রতিষ্ঠার সাল] সালে প্রতিষ্ঠিত, [আপনার ব্যবসার নাম] একটি ছোট উদ্যোগ হিসেবে যাত্রা শুরু করে। আমাদের লক্ষ্য ছিল সেরা মানের কাপড় এবং সৃজনশীল ডিজাইন দিয়ে এমন টি-শার্ট তৈরি করা যা তরুণ প্রজন্মের ফ্যাশনের প্রতীক হয়ে উঠবে। বছরের পর বছর ধরে, আপনাদের ভালোবাসা এবং সমর্থনে আমরা আজ এই পর্যায়ে এসেছি।</p>
+                        <p class="text-text-muted" data-lang-bn="আমরা বিশ্বাস করি যে পোশাক শুধু একটি আবরণ নয়, এটি ব্যক্তিত্ব প্রকাশের একটি মাধ্যম। তাই আমরা প্রতিটি ডিজাইনে নতুনত্ব এবং বৈচিত্র্য আনার চেষ্টা করি।" data-lang-en="We believe that clothing is not just a covering, but a medium of expressing personality. That's why we strive to bring innovation and diversity to every design.">আমরা বিশ্বাস করি যে পোশাক শুধু একটি আবরণ নয়, এটি ব্যক্তিত্ব প্রকাশের একটি মাধ্যম। তাই আমরা প্রতিটি ডিজাইনে নতুনত্ব এবং বৈচিত্র্য আনার চেষ্টা করি।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Our Mission Section -->
+        <section class="py-20 bg-card-bg">
+            <div class="container mx-auto px-6 text-center max-w-4xl">
+                 <h2 class="section-title text-3xl md:text-4xl text-text-base mb-6" data-lang-bn="আমাদের লক্ষ্য" data-lang-en="Our Mission">আমাদের লক্ষ্য</h2>
+                 <p class="text-lg text-text-muted italic" data-lang-bn="&quot;সারা দেশে সাশ্রয়ী মূল্যে সেরা মানের এবং ট্রেন্ডি টি-শার্ট পৌঁছে দেওয়া, যা গ্রাহকদের সন্তুষ্টি অর্জন করবে এবং আমাদের ব্র্যান্ডকে একটি আস্থার নাম হিসেবে প্রতিষ্ঠিত করবে।&quot;" data-lang-en="&quot;To deliver the best quality and trendy t-shirts at affordable prices across the country, which will achieve customer satisfaction and establish our brand as a name of trust.&quot;">"সারা দেশে সাশ্রয়ী মূল্যে সেরা মানের এবং ট্রেন্ডি টি-শার্ট পৌঁছে দেওয়া, যা গ্রাহকদের সন্তুষ্টি অর্জন করবে এবং আমাদের ব্র্যান্ডকে একটি আস্থার নাম হিসেবে প্রতিষ্ঠিত করবে।"</p>
+            </div>
+        </section>
+
+        <!-- Meet The Team Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl md:text-4xl text-center text-text-base mb-12" data-lang-bn="আমাদের টিম" data-lang-en="Meet The Team">আমাদের টিম</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Team Member 1 -->
+                    <div class="card p-6 text-center">
+                        <img src="https://placehold.co/200x200/e0e0e0/1e1e1e?text=Team+1" alt="টিম সদস্য ১" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary">
+                        <h3 class="text-xl font-bold text-text-base" data-lang-bn="সদস্যের নাম" data-lang-en="Member Name">সদস্যের নাম</h3>
+                        <p class="text-primary" data-lang-bn="পদবি" data-lang-en="Designation">পদবি</p>
+                    </div>
+                     <!-- Team Member 2 -->
+                    <div class="card p-6 text-center">
+                        <img src="https://placehold.co/200x200/e0e0e0/1e1e1e?text=Team+2" alt="টিম সদস্য ২" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary">
+                        <h3 class="text-xl font-bold text-text-base" data-lang-bn="সদস্যের নাম" data-lang-en="Member Name">সদস্যের নাম</h3>
+                        <p class="text-primary" data-lang-bn="পদবি" data-lang-en="Designation">পদবি</p>
+                    </div>
+                     <!-- Team Member 3 -->
+                    <div class="card p-6 text-center">
+                        <img src="https://placehold.co/200x200/e0e0e0/1e1e1e?text=Team+3" alt="টিম সদস্য ৩" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary">
+                        <h3 class="text-xl font-bold text-text-base" data-lang-bn="সদস্যের নাম" data-lang-en="Member Name">সদস্যের নাম</h3>
+                        <p class="text-primary" data-lang-bn="পদবি" data-lang-en="Designation">পদবি</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black pt-12 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4" data-lang-bn="আমাদের সম্পর্কে" data-lang-en="About Us">আমাদের সম্পর্কে</h3>
+                    <p class="text-gray-400" data-lang-bn="আমরা সেরা মানের কাপড়ে আকর্ষণীয় ডিজাইন দিয়ে টি-শার্ট তৈরি করি যা আপনার ব্যক্তিত্বকে ফুটিয়ে তোলে।" data-lang-en="We create t-shirts with attractive designs on the best quality fabric that expresses your personality.">আমরা সেরা মানের কাপড়ে আকর্ষণীয় ডিজাইন দিয়ে টি-শার্ট তৈরি করি যা আপনার ব্যক্তিত্বকে ফুটিয়ে তোলে।</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4" data-lang-bn="গুরুত্বপূর্ণ লিংক" data-lang-en="Quick Links">গুরুত্বপূর্ণ লিংক</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary transition-colors" data-lang-bn="আমাদের পরিচয়" data-lang-en="About Us">আমাদের পরিচয়</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary transition-colors" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors" data-lang-bn="শর্তাবলী" data-lang-en="Terms & Conditions">শর্তাবলী</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4" data-lang-bn="যোগাযোগ" data-lang-en="Contact">যোগাযোগ</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-primary"></i><span data-lang-bn="আপনার ঠিকানা, শহর, দেশ" data-lang-en="Your Address, City, Country">আপনার ঠিকানা, শহর, দেশ</span></li>
+                        <li class="flex items-center"><i class="fas fa-phone-alt mr-3 text-primary"></i><span>+880 123 456 7890</span></li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-3 text-primary"></i><span>info@yourbrand.com</span></li>
+                    </ul>
+                </div>
+                <!-- Social Media -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4" data-lang-bn="আমাদের অনুসরণ করুন" data-lang-en="Follow Us">আমাদের অনুসরণ করুন</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 text-2xl hover:text-primary transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 text-2xl hover:text-primary transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 text-2xl hover:text-primary transition-colors"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 text-center text-gray-500">
+                <p data-lang-bn="&copy; 2025 আপনার ব্যবসার নাম। সর্বস্বত্ব সংরক্ষিত।" data-lang-en="&copy; 2025 Your Brand Name. All Rights Reserved.">&copy; 2025 আপনার ব্যবসার নাম। সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- SwiperJS for Slider -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Common JS File -->
+    <script src="script.js"></script>
+</body>
+</html>
+
